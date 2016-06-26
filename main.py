@@ -237,49 +237,54 @@ file.close();
 
 ## File Basics:
 finalFile = open("final.txt", "wb")
+
 finalFile.write("---------------------------------------\r\n")
+print "---------------------------------------"
+
 finalFile.write("Tempo de Simulacao:" + str(simulationTime))
+print "Tempo de Simulacao: %d" %(simulationTime)
+
 finalFile.write("\r\n---------------------------------------\r\n")
+print "---------------------------------------"
+
 finalFile.write("Gerador(es):" + str(generators.quantity))
+print "Gerador(es): %d" %(generators.quantity)
+
 for x in xrange(0, generators.quantity):
 	finalFile.write("\r\n- G" + str(generators.list[x]) + " Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
+	print "- G%d Destino: %s%d" %(generators.list[x], generators.destinyComponent[x], generators.destinyId[x])
+
 finalFile.write("\r\n---------------------------------------\r\n")
+print "---------------------------------------"
+
 componentsQuantity = len(components)
 finalFile.write("Componentes: " + str(componentsQuantity))
+print "Componentes: %d" %(componentsQuantity)
+
 for x in xrange(0, componentsQuantity):
 	finalFile.write("\r\n- C" + str(components[x].id) + " Destino: " + str(components[x].destinyComponent) + str(components[x].destinyId))
+	print "- C%d Destino: %s%d" %(components[x].id, components[x].destinyComponent, components[x].destinyId)
+
 	for y in xrange(0, components[x].serversQuantity):
-		finalFile.write("\r\n-- S" + str(y) + ":" + str(components[x].serversList[y].beginTime) + " - " + str(components[x].serversList[y].endTime)) 
+		finalFile.write("\r\n-- S" + str(y) + ":" + str(components[x].serversList[y].beginTime) + " - " + str(components[x].serversList[y].endTime))
+		print "-- S%d: %d - %d" %(y, components[x].serversList[y].beginTime, components[x].serversList[y].endTime) 
+
 finalFile.write("\r\n---------------------------------------\r\n")
+print "---------------------------------------"
+
 dividersQuantity = len(dividers)
 finalFile.write("Roteadores: "+ str(dividersQuantity))
+print "Roteadores: %d" %(dividersQuantity)
+
 for x in xrange(0, dividersQuantity):
 	finalFile.write("\r\n- D" + str(dividers[x].id) + ":")
+	print "- D%d:" %(dividers[x].id)
+
 	for y in xrange(0, len(dividers[x].decisionsList)):
 		finalFile.write("\r\n-- " + str(dividers[x].decisionsList[y].percent) + " - " + str(dividers[x].decisionsList[y].destiny) + str(dividers[x].decisionsList[y].destinyId))
-finalFile.write("\r\n---------------------------------------\r\n")
-
-## Program Basic Prints for understand archteture
-print "---------------------------------------"
-print "Tempo de Simulacao: %d" %(simulationTime)
-print "---------------------------------------"
-print "Gerador(es): %d" %(generators.quantity)
-for x in xrange(0, generators.quantity):
-	print "- G%d Destino: %s%d" %(generators.list[x], generators.destinyComponent[x], generators.destinyId[x])
-print "---------------------------------------"
-componentsQuantity = len(components)
-print "Componentes: %d" %(componentsQuantity)
-for x in xrange(0, componentsQuantity):
-	print "- C%d Destino: %s%d" %(components[x].id, components[x].destinyComponent, components[x].destinyId)
-	for y in xrange(0, components[x].serversQuantity):
-		print "-- S%d: %d - %d" %(y, components[x].serversList[y].beginTime, components[x].serversList[y].endTime) 
-print "---------------------------------------"
-dividersQuantity = len(dividers)
-print "Roteadores: %d" %(dividersQuantity)
-for x in xrange(0, dividersQuantity):
-	print "- D%d:" %(dividers[x].id)
-	for y in xrange(0, len(dividers[x].decisionsList)):
 		print "-- %f - %s%d" %(dividers[x].decisionsList[y].percent, dividers[x].decisionsList[y].destiny, dividers[x].decisionsList[y].destinyId)
+
+finalFile.write("\r\n---------------------------------------\r\n")
 print "---------------------------------------"
 
 entityQuantity = 0
@@ -302,4 +307,4 @@ for time in xrange(1, simulationTime):
 			
 			print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList[0], entities[x].placeListId[0], entities[x].destiny, entities[x].destinyId)
 
-	print "---------------------------------------"
+	#print "---------------------------------------"
