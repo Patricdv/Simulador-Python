@@ -6,12 +6,15 @@ from random import randrange, uniform
 import types
 
 class Entities(object):
-	def __init__(self, entityId = 0, startTime = 0, placeList = [], placeListId = [], placeEnterTime = []):
-		self.entityId = entityId
+	def __init__(self, id = 0, startTime = 0, placeList = [], placeListId = [], placeEnterTime = [], hostTime = 0, destiny = '', destinyId = 0):
+		self.id = id
 		self.startTime = startTime
-		self.placeList = placeList[]
-		self.placeListId = placeListId[]
-		self.placeEnterTime = placeEnterTime[]
+		self.placeList = placeList
+		self.placeListId = placeListId
+		self.placeEnterTime = placeEnterTime
+		self.hostTime = hostTime
+		self.destiny = destiny
+		self.destinyId = destinyId
 
 class Server(object):
     def __init__(self, componentId = 0, beginTime = 0, endTime = 0, inUse = 0):
@@ -45,6 +48,7 @@ class Dividers(object):
 		self.id = id
 		self.decisionsList = decisionsList
 
+entities = []
 generators = Generators()
 components = []
 dividers = []
@@ -278,7 +282,24 @@ for x in xrange(0, dividersQuantity):
 		print "-- %f - %s%d" %(dividers[x].decisionsList[y].percent, dividers[x].decisionsList[y].destiny, dividers[x].decisionsList[y].destinyId)
 print "---------------------------------------"
 
+entityQuantity = 0
 ## Beginning
+for x in xrange(0, generators.quantity):
+	quantity = randint(1, 10)
+	for y in xrange(0, quantity):
+		entityQuantity += 1
+		startTime = randint(1, 25) #simulationTime)
+		placeList = []
+		placeList.append('G')
+		placeListId = []
+		placeListId.append(generators.list[x])
+		entities.append(Entities(entityQuantity, startTime, placeList, placeListId, startTime, 0, generators.destinyComponent[x], generators.destinyId[x]))
 
-for x in xrange(1, simulationTime):
-	
+print "Entidades:"
+for time in xrange(1, simulationTime):
+	for x in xrange(0, entityQuantity):
+		if entities[x].startTime >= time and entities[x].hostTime == 0:
+			
+			print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList[0], entities[x].placeListId[0], entities[x].destiny, entities[x].destinyId)
+
+	print "---------------------------------------"

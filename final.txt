@@ -1,8 +1,9 @@
 ---------------------------------------
 Tempo de Simulacao:50000
 ---------------------------------------
-Gerador(es):1
+Gerador(es):2
 - G1 Destino: C1
+- G2 Destino: C2
 ---------------------------------------
 Componentes: 2
 - C1 Destino: C2
