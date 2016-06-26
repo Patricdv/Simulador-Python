@@ -32,6 +32,7 @@ class Decisions(object):
 class Generators:
 	quantity = 0
 	list = []
+	entitiesQuantity = []
 	destinyComponent = []
 	destinyId = []
 
@@ -66,11 +67,23 @@ def makeModel(model):
 				number += str(x)
 				position += 1
 				x = line[position]
-				if x == '-':
+				if x == ';':
 					break
 
 			generators.list.append(int(number))
 			position += 1
+
+			number = ''
+			x = line[position]
+			while 1:
+				number += str(x)
+				position += 1
+				x = line[position]
+				if x == ';':
+					break
+			generators.entitiesQuantity.append(int(number))
+			position += 1
+
 			generators.destinyComponent.append(line[position])
 			position += 1
 
@@ -228,6 +241,19 @@ def makeModel(model):
 			global simulationTime
 			simulationTime = int(number)
 
+		if line[0] == 'E':
+			position = 1
+			number = ''
+			x = line[position]
+			while 1:
+				number += str(x)
+				position += 1
+				x = line[position]
+				if x == ';':
+					break
+			global entitiesQuantity
+			entitiesQuantity = int(number)
+
 ## Main
 			
 file = open("base", "r");
@@ -287,24 +313,28 @@ for x in xrange(0, dividersQuantity):
 finalFile.write("\r\n---------------------------------------\r\n")
 print "---------------------------------------"
 
-entityQuantity = 0
 ## Beginning
+entityId = 0
+
+finalFile.write("1 - Entidades:")
+print "1 - Entidades:"
 for x in xrange(0, generators.quantity):
-	quantity = randint(1, 10)
+	quantity = generators.entitiesQuantity[x]
 	for y in xrange(0, quantity):
-		entityQuantity += 1
+		entityId += 1
 		startTime = randint(1, 25) #simulationTime)
 		placeList = []
 		placeList.append('G')
 		placeListId = []
 		placeListId.append(generators.list[x])
-		entities.append(Entities(entityQuantity, startTime, placeList, placeListId, startTime, 0, generators.destinyComponent[x], generators.destinyId[x]))
+		entities.append(Entities(entityId, startTime, placeList, placeListId, startTime, 0, generators.destinyComponent[x], generators.destinyId[x]))
+		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entityId, startTime, placeList, placeListId, generators.destinyComponent[x], generators.destinyId[x])
+		finalFile.write(str(entityId) + " | Entrada: " + str(startTime) + " | Local: G" + str(generators.list[x]) + " | Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
 
-print "Entidades:"
 for time in xrange(1, simulationTime):
-	for x in xrange(0, entityQuantity):
+	for x in xrange(0, entityId):
 		if entities[x].startTime >= time and entities[x].hostTime == 0:
-			
-			print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList[0], entities[x].placeListId[0], entities[x].destiny, entities[x].destinyId)
+			pass
+		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList[0], entities[x].placeListId[0], entities[x].destiny, entities[x].destinyId)
 
 	#print "---------------------------------------"
