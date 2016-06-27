@@ -351,7 +351,7 @@ for time in xrange(0, simulationTime):
 									entities[x].destiny = components[y].destinyComponent
 									entities[x].destinyId = components[y].destinyId
 									aux += 1
-				if entities[x].destiny == 'D':
+				elif entities[x].destiny == 'D':
 					for y in xrange(0, len(dividers)):
 						if dividers[y].id == entities[x].destinyId:
 							rand = random()  
@@ -364,7 +364,7 @@ for time in xrange(0, simulationTime):
 									entities[x].placeEnterTime.append(time)
 									entities[x].destiny = dividers[y].decisionsList[z].destiny
 									entities[x].destinyId = dividers[y].decisionsList[z].destinyId
-				if entities[x].destiny == 'S':
+				elif entities[x].destiny == 'S':
 					entities[x].hostTime = -1
 			else:
 				entities[x].hostTime -= 1
