@@ -18,23 +18,23 @@ Roteadores: 1
 -- 0.2 - S2
 ---------------------------------------
 1 - Entidades:
-1 | Entrada: 4 | Local: G1 | Destino: C1
-2 | Entrada: 8 | Local: G1 | Destino: C1
-3 | Entrada: 5 | Local: G1 | Destino: C1
-4 | Entrada: 6 | Local: G1 | Destino: C1
-5 | Entrada: 23 | Local: G1 | Destino: C1
-6 | Entrada: 7 | Local: G1 | Destino: C1
-7 | Entrada: 6 | Local: G1 | Destino: C1
-8 | Entrada: 14 | Local: G1 | Destino: C1
-9 | Entrada: 22 | Local: G1 | Destino: C1
-10 | Entrada: 2 | Local: G1 | Destino: C1
-11 | Entrada: 25 | Local: G1 | Destino: C1
-12 | Entrada: 2 | Local: G1 | Destino: C1
-13 | Entrada: 11 | Local: G1 | Destino: C1
-14 | Entrada: 22 | Local: G1 | Destino: C1
-15 | Entrada: 2 | Local: G1 | Destino: C1
-16 | Entrada: 7 | Local: G1 | Destino: C1
-17 | Entrada: 19 | Local: G1 | Destino: C1
-18 | Entrada: 17 | Local: G1 | Destino: C1
-19 | Entrada: 20 | Local: G1 | Destino: C1
-20 | Entrada: 14 | Local: G1 | Destino: C1
+1 | Entrada: 22 | Local: G1 | Destino: C1
+2 | Entrada: 23 | Local: G1 | Destino: C1
+3 | Entrada: 6 | Local: G1 | Destino: C1
+4 | Entrada: 21 | Local: G1 | Destino: C1
+5 | Entrada: 6 | Local: G1 | Destino: C1
+6 | Entrada: 2 | Local: G1 | Destino: C1
+7 | Entrada: 5 | Local: G1 | Destino: C1
+8 | Entrada: 9 | Local: G1 | Destino: C1
+9 | Entrada: 9 | Local: G1 | Destino: C1
+10 | Entrada: 20 | Local: G1 | Destino: C1
+11 | Entrada: 1 | Local: G1 | Destino: C1
+12 | Entrada: 7 | Local: G1 | Destino: C1
+13 | Entrada: 5 | Local: G1 | Destino: C1
+14 | Entrada: 13 | Local: G1 | Destino: C1
+15 | Entrada: 23 | Local: G1 | Destino: C1
+16 | Entrada: 1 | Local: G1 | Destino: C1
+17 | Entrada: 15 | Local: G1 | Destino: C1
+18 | Entrada: 3 | Local: G1 | Destino: C1
+19 | Entrada: 22 | Local: G1 | Destino: C1
+20 | Entrada: 15 | Local: G1 | Destino: C1

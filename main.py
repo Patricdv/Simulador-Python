@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import math
 import re
-from random import randint
-from random import randrange, uniform
+from random import randint, random, randrange, uniform
+
 import types
 
 class Entities(object):
@@ -327,19 +327,22 @@ for x in xrange(0, generators.quantity):
 		placeList.append('G')
 		placeListId = []
 		placeListId.append(generators.list[x])
-		entities.append(Entities(entityId, startTime, placeList, placeListId, startTime, 0, generators.destinyComponent[x], generators.destinyId[x]))
+		placeEnterTime = []
+		placeEnterTime.append(startTime)
+		entities.append(Entities(entityId, startTime, placeList, placeListId, placeEnterTime, 0, generators.destinyComponent[x], generators.destinyId[x]))
 		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entityId, startTime, placeList, placeListId, generators.destinyComponent[x], generators.destinyId[x])
 		finalFile.write("\r\n" + str(entityId) + " | Entrada: " + str(startTime) + " | Local: G" + str(generators.list[x]) + " | Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
 		
-for time in xrange(1, simulationTime):
+for time in xrange(0, simulationTime):
 	for x in xrange(0, entityId):
 		if time >= entities[x].startTime: 
 			if entities[x].hostTime == 0:
 				if entities[x].destiny == 'C':
 					for y in xrange(0, len(components)):
 						if components[y].id == entities[x].destinyId:
+							aux = 0
 							for z in xrange(0, components[y].serversQuantity):
-								if components[y].serversList[z].inUse == 0:
+								if components[y].serversList[z].inUse == 0 and aux == 0:
 									components[y].serversList[z].inUse = 1
 									entities[x].placeList.append('C')
 									entities[x].placeListId.append(components[y].id)
@@ -347,27 +350,27 @@ for time in xrange(1, simulationTime):
 									entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
 									entities[x].destiny = components[y].destinyComponent
 									entities[x].destinyId = components[y].destinyId
-									break
+									aux += 1
 				if entities[x].destiny == 'D':
 					for y in xrange(0, len(dividers)):
 						if dividers[y].id == entities[x].destinyId:
-							for z in xrange(0, components[y].serversQuantity):
-								rand = floatrand(0, 1)
-								if components[y].serversList[z].inUse == 0:
-									components[y].serversList[z].inUse = 1
-									entities[x].placeList.append('C')
-									entities[x].placeListId.append(components[y].id)
+							rand = random()  
+							check = 0.0
+							for z in xrange(0, len(dividers[y].decisionsList)):
+								check += dividers[y].decisionsList[z].percent
+								if rand <= check:
+									entities[x].placeList.append('D')
+									entities[x].placeListId.append(dividers[y].id)
 									entities[x].placeEnterTime.append(time)
-									entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
-									entities[x].destiny = components[y].destinyComponent
-									entities[x].destinyId = components[y].destinyId
-									break
+									entities[x].destiny = dividers[y].decisionsList[z].destiny
+									entities[x].destinyId = dividers[y].decisionsList[z].destinyId
 				if entities[x].destiny == 'S':
 					entities[x].hostTime = -1
 			else:
 				entities[x].hostTime -= 1
-		print "%d | Tempo da Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList, entities[x].placeListId, entities[x].destiny, entities[x].destinyId)
 
-
-
-	#print "---------------------------------------"
+for x in xrange(0, entityId):
+	print "\r\n%d | Tempo da Entrada: %d | " %(entities[x].id, entities[x].startTime),
+	for y in xrange(0, len(entities[x].placeList)):
+		print "Entidade:%s%d - %ss | " %(entities[x].placeList[y], entities[x].placeListId[y], entities[x].placeEnterTime[y]),
+	print "\r\n---------------------------------------"
