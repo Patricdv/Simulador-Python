@@ -329,12 +329,45 @@ for x in xrange(0, generators.quantity):
 		placeListId.append(generators.list[x])
 		entities.append(Entities(entityId, startTime, placeList, placeListId, startTime, 0, generators.destinyComponent[x], generators.destinyId[x]))
 		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entityId, startTime, placeList, placeListId, generators.destinyComponent[x], generators.destinyId[x])
-		finalFile.write(str(entityId) + " | Entrada: " + str(startTime) + " | Local: G" + str(generators.list[x]) + " | Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
-
+		finalFile.write("\r\n" + str(entityId) + " | Entrada: " + str(startTime) + " | Local: G" + str(generators.list[x]) + " | Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
+		
 for time in xrange(1, simulationTime):
 	for x in xrange(0, entityId):
-		if entities[x].startTime >= time and entities[x].hostTime == 0:
-			pass
-		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList[0], entities[x].placeListId[0], entities[x].destiny, entities[x].destinyId)
+		if time >= entities[x].startTime: 
+			if entities[x].hostTime == 0:
+				if entities[x].destiny == 'C':
+					for y in xrange(0, len(components)):
+						if components[y].id == entities[x].destinyId:
+							for z in xrange(0, components[y].serversQuantity):
+								if components[y].serversList[z].inUse == 0:
+									components[y].serversList[z].inUse = 1
+									entities[x].placeList.append('C')
+									entities[x].placeListId.append(components[y].id)
+									entities[x].placeEnterTime.append(time)
+									entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
+									entities[x].destiny = components[y].destinyComponent
+									entities[x].destinyId = components[y].destinyId
+									break
+				if entities[x].destiny == 'D':
+					for y in xrange(0, len(dividers)):
+						if dividers[y].id == entities[x].destinyId:
+							for z in xrange(0, components[y].serversQuantity):
+								rand = floatrand(0, 1)
+								if components[y].serversList[z].inUse == 0:
+									components[y].serversList[z].inUse = 1
+									entities[x].placeList.append('C')
+									entities[x].placeListId.append(components[y].id)
+									entities[x].placeEnterTime.append(time)
+									entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
+									entities[x].destiny = components[y].destinyComponent
+									entities[x].destinyId = components[y].destinyId
+									break
+				if entities[x].destiny == 'S':
+					entities[x].hostTime = -1
+			else:
+				entities[x].hostTime -= 1
+		print "%d | Tempo da Entrada: %d | Local: %s%s | Destino: %s%d" %(entities[x].id, entities[x].startTime, entities[x].placeList, entities[x].placeListId, entities[x].destiny, entities[x].destinyId)
+
+
 
 	#print "---------------------------------------"

@@ -1,9 +1,8 @@
 ---------------------------------------
-Tempo de Simulacao:50000
+Tempo de Simulacao:500
 ---------------------------------------
-Gerador(es):2
+Gerador(es):1
 - G1 Destino: C1
-- G2 Destino: C2
 ---------------------------------------
 Componentes: 2
 - C1 Destino: C2
@@ -18,3 +17,24 @@ Roteadores: 1
 -- 0.5 - S1
 -- 0.2 - S2
 ---------------------------------------
+1 - Entidades:
+1 | Entrada: 4 | Local: G1 | Destino: C1
+2 | Entrada: 8 | Local: G1 | Destino: C1
+3 | Entrada: 5 | Local: G1 | Destino: C1
+4 | Entrada: 6 | Local: G1 | Destino: C1
+5 | Entrada: 23 | Local: G1 | Destino: C1
+6 | Entrada: 7 | Local: G1 | Destino: C1
+7 | Entrada: 6 | Local: G1 | Destino: C1
+8 | Entrada: 14 | Local: G1 | Destino: C1
+9 | Entrada: 22 | Local: G1 | Destino: C1
+10 | Entrada: 2 | Local: G1 | Destino: C1
+11 | Entrada: 25 | Local: G1 | Destino: C1
+12 | Entrada: 2 | Local: G1 | Destino: C1
+13 | Entrada: 11 | Local: G1 | Destino: C1
+14 | Entrada: 22 | Local: G1 | Destino: C1
+15 | Entrada: 2 | Local: G1 | Destino: C1
+16 | Entrada: 7 | Local: G1 | Destino: C1
+17 | Entrada: 19 | Local: G1 | Destino: C1
+18 | Entrada: 17 | Local: G1 | Destino: C1
+19 | Entrada: 20 | Local: G1 | Destino: C1
+20 | Entrada: 14 | Local: G1 | Destino: C1
