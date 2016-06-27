@@ -351,6 +351,7 @@ for time in xrange(0, simulationTime):
 									entities[x].destiny = components[y].destinyComponent
 									entities[x].destinyId = components[y].destinyId
 									aux += 1
+									print aux
 				elif entities[x].destiny == 'D':
 					for y in xrange(0, len(dividers)):
 						if dividers[y].id == entities[x].destinyId:
@@ -365,12 +366,17 @@ for time in xrange(0, simulationTime):
 									entities[x].destiny = dividers[y].decisionsList[z].destiny
 									entities[x].destinyId = dividers[y].decisionsList[z].destinyId
 				elif entities[x].destiny == 'S':
-					entities[x].hostTime = -1
+					pass
 			else:
 				entities[x].hostTime -= 1
 
+finalFile.write("\r\n---------------------------------------\r\n")
+
 for x in xrange(0, entityId):
-	print "\r\n%d | Tempo da Entrada: %d | " %(entities[x].id, entities[x].startTime),
+	print "\r\n%d | Entrada: %d | " %(entities[x].id, entities[x].startTime),
+	finalFile.write("\n" + str(entities[x].id) + " | Entrada: " + str(entities[x].startTime) + " | ")
 	for y in xrange(0, len(entities[x].placeList)):
 		print "Entidade:%s%d - %ss | " %(entities[x].placeList[y], entities[x].placeListId[y], entities[x].placeEnterTime[y]),
+		finalFile.write("Entidade:" + str(entities[x].placeList[y]) + str(entities[x].placeListId[y]) + " - " + str(entities[x].placeEnterTime[y]) + "s ")
 	print "\r\n---------------------------------------"
+	finalFile.write("\r\n---------------------------------------\r\n")
