@@ -6,12 +6,13 @@ from random import randint, random, randrange, uniform
 import types
 
 class Entities(object):
-	def __init__(self, id = 0, startTime = 0, placeList = [], placeListId = [], placeEnterTime = [], hostTime = 0, destiny = '', destinyId = 0, inComponent = 0, inServer = 0, totalOtioseTime = 0):
+	def __init__(self, id = 0, startTime = 0, placeList = [], placeListId = [], placeEnterTime = [], placeExitTime = [], hostTime = 0, destiny = '', destinyId = 0, inComponent = 0, inServer = 0, totalOtioseTime = 0):
 		self.id = id
 		self.startTime = startTime
 		self.placeList = placeList
 		self.placeListId = placeListId
 		self.placeEnterTime = placeEnterTime
+		self.placeExitTime = placeExitTime
 		self.hostTime = hostTime
 		self.destiny = destiny
 		self.destinyId = destinyId
@@ -334,7 +335,9 @@ for x in xrange(0, generators.quantity):
 		placeListId.append(generators.list[x])
 		placeEnterTime = []
 		placeEnterTime.append(startTime)
-		entities.append(Entities(entityId, startTime, placeList, placeListId, placeEnterTime, 0, generators.destinyComponent[x], generators.destinyId[x], -1, 0, 0))
+		placeExitTime = []
+		placeExitTime.append(startTime)
+		entities.append(Entities(entityId, startTime, placeList, placeListId, placeEnterTime, placeExitTime, 0, generators.destinyComponent[x], generators.destinyId[x], -1, 0, 0))
 		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entityId, startTime, placeList, placeListId, generators.destinyComponent[x], generators.destinyId[x])
 		finalFile.write("\r\n" + str(entityId) + " | Entrada: " + str(startTime) + " | Local: G" + str(generators.list[x]) + " | Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
 		
@@ -343,8 +346,8 @@ for time in xrange(0, simulationTime):
 		if time > entities[x].startTime: 
 			if entities[x].hostTime == 0:
 				if entities[x].inComponent >= 0:
-					print("liberado\n")
 					components[entities[x].inComponent].serversList[entities[x].inServer].inUse = 0
+					entities[x].placeExitTime[-1] = time
 					entities[x].inComponent = -1
 				else:
 					if entities[x].destiny == 'C':
@@ -359,6 +362,7 @@ for time in xrange(0, simulationTime):
 												entities[x].placeList.append('C')
 												entities[x].placeListId.append(components[y].id)
 												entities[x].placeEnterTime.append(time)
+												entities[x].placeExitTime.append(0)
 												entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
 												entities[x].destiny = components[y].destinyComponent
 												entities[x].destinyId = components[y].destinyId
@@ -380,6 +384,7 @@ for time in xrange(0, simulationTime):
 											entities[x].placeList.append('C')
 											entities[x].placeListId.append(components[y].id)
 											entities[x].placeEnterTime.append(time)
+											entities[x].placeExitTime.append(0)
 											entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
 											entities[x].destiny = components[y].destinyComponent
 											entities[x].destinyId = components[y].destinyId
@@ -401,6 +406,7 @@ for time in xrange(0, simulationTime):
 										entities[x].placeList.append('D')
 										entities[x].placeListId.append(dividers[y].id)
 										entities[x].placeEnterTime.append(time)
+										entities[x].placeExitTime.append(time)
 										entities[x].destiny = dividers[y].decisionsList[z].destiny
 										entities[x].destinyId = dividers[y].decisionsList[z].destinyId
 										aux += 1
@@ -415,8 +421,8 @@ for x in xrange(0, entityId):
 	print "\r\n%d Entrada: %d | " %(entities[x].id, entities[x].startTime),
 	finalFile.write("\n" + str(entities[x].id) + " Tempo Ocioso: " + str(entities[x].totalOtioseTime) + " | Entrada: " + str(entities[x].startTime) + " | ")
 	for y in xrange(0, len(entities[x].placeList)):
-		print "Entidade:%s%d - %ss | " %(entities[x].placeList[y], entities[x].placeListId[y], entities[x].placeEnterTime[y]),
-		finalFile.write("Entidade:" + str(entities[x].placeList[y]) + str(entities[x].placeListId[y]) + " - " + str(entities[x].placeEnterTime[y]) + "s ")
+		print "Entidade:%s%d: %s - %ss | " %(entities[x].placeList[y], entities[x].placeListId[y], entities[x].placeEnterTime[y], entities[x].placeExitTime[y]),
+		finalFile.write("Entidade:" + str(entities[x].placeList[y]) + str(entities[x].placeListId[y]) + ": " + str(entities[x].placeExitTime[y]) + " - " + str(entities[x].placeEnterTime[y]) + "s ")
 	print " || Tempo Ocioso: %d" %(entities[x].totalOtioseTime),
 	finalFile.write(" || Tempo Ocioso: " + str(entities[x].totalOtioseTime))
 	print "\r\n---------------------------------------"

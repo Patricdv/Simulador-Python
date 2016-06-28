@@ -17,44 +17,44 @@ Roteadores: 1
 -- 0.7 - S1
 ---------------------------------------
 1 - Entidades:
-1 | Entrada: 10 | Local: G1 | Destino: C1
-2 | Entrada: 8 | Local: G1 | Destino: C1
+1 | Entrada: 9 | Local: G1 | Destino: C1
+2 | Entrada: 5 | Local: G1 | Destino: C1
 3 | Entrada: 8 | Local: G1 | Destino: C1
-4 | Entrada: 10 | Local: G1 | Destino: C1
-5 | Entrada: 8 | Local: G1 | Destino: C1
-6 | Entrada: 5 | Local: G1 | Destino: C1
-7 | Entrada: 2 | Local: G1 | Destino: C1
-8 | Entrada: 7 | Local: G1 | Destino: C1
-9 | Entrada: 1 | Local: G1 | Destino: C1
-10 | Entrada: 2 | Local: G1 | Destino: C1
+4 | Entrada: 9 | Local: G1 | Destino: C1
+5 | Entrada: 3 | Local: G1 | Destino: C1
+6 | Entrada: 8 | Local: G1 | Destino: C1
+7 | Entrada: 4 | Local: G1 | Destino: C1
+8 | Entrada: 3 | Local: G1 | Destino: C1
+9 | Entrada: 4 | Local: G1 | Destino: C1
+10 | Entrada: 6 | Local: G1 | Destino: C1
 ---------------------------------------
 
-1 Tempo Ocioso: 103 | Entrada: 10 | Entidade:G1 - 10s Entidade:C1 - 65s Entidade:C2 - 118s Entidade:D1 - 135s Entidade:C1 - 142s Entidade:C2 - 151s Entidade:D1 - 167s Entidade:C1 - 168s Entidade:C2 - 176s Entidade:D1 - 185s  || Tempo Ocioso: 103
+1 Tempo Ocioso: 97 | Entrada: 9 | Entidade:G1: 9 - 9s Entidade:C1: 68 - 61s Entidade:C2: 123 - 115s Entidade:D1: 124 - 124s  || Tempo Ocioso: 97
 ---------------------------------------
 
-2 Tempo Ocioso: 83 | Entrada: 8 | Entidade:G1 - 8s Entidade:C1 - 42s Entidade:C2 - 101s Entidade:D1 - 112s  || Tempo Ocioso: 83
+2 Tempo Ocioso: 77 | Entrada: 5 | Entidade:G1: 5 - 5s Entidade:C1: 38 - 31s Entidade:C2: 102 - 91s Entidade:D1: 103 - 103s  || Tempo Ocioso: 77
 ---------------------------------------
 
-3 Tempo Ocioso: 102 | Entrada: 8 | Entidade:G1 - 8s Entidade:C1 - 50s Entidade:C2 - 106s Entidade:D1 - 118s Entidade:C1 - 133s Entidade:C2 - 142s Entidade:D1 - 152s  || Tempo Ocioso: 102
+3 Tempo Ocioso: 86 | Entrada: 8 | Entidade:G1: 8 - 8s Entidade:C1: 51 - 45s Entidade:C2: 114 - 102s Entidade:D1: 115 - 115s  || Tempo Ocioso: 86
 ---------------------------------------
 
-4 Tempo Ocioso: 104 | Entrada: 10 | Entidade:G1 - 10s Entidade:C1 - 74s Entidade:C2 - 125s Entidade:D1 - 137s  || Tempo Ocioso: 104
+4 Tempo Ocioso: 103 | Entrada: 9 | Entidade:G1: 9 - 9s Entidade:C1: 77 - 68s Entidade:C2: 135 - 123s Entidade:D1: 136 - 136s  || Tempo Ocioso: 103
 ---------------------------------------
 
-5 Tempo Ocioso: 95 | Entrada: 8 | Entidade:G1 - 8s Entidade:C1 - 58s Entidade:C2 - 111s Entidade:D1 - 125s  || Tempo Ocioso: 95
+5 Tempo Ocioso: 99 | Entrada: 3 | Entidade:G1: 3 - 3s Entidade:C1: 9 - 4s Entidade:C2: 80 - 68s Entidade:D1: 81 - 81s Entidade:C1: 131 - 123s Entidade:C2: 146 - 132s Entidade:D1: 147 - 147s  || Tempo Ocioso: 99
 ---------------------------------------
 
-6 Tempo Ocioso: 72 | Entrada: 5 | Entidade:G1 - 5s Entidade:C1 - 23s Entidade:C2 - 88s Entidade:D1 - 101s  || Tempo Ocioso: 72
+6 Tempo Ocioso: 93 | Entrada: 8 | Entidade:G1: 8 - 8s Entidade:C1: 60 - 51s Entidade:C2: 124 - 112s Entidade:D1: 125 - 125s  || Tempo Ocioso: 93
 ---------------------------------------
 
-7 Tempo Ocioso: 65 | Entrada: 2 | Entidade:G1 - 2s Entidade:C1 - 9s Entidade:C2 - 74s Entidade:D1 - 88s  || Tempo Ocioso: 65
+7 Tempo Ocioso: 67 | Entrada: 4 | Entidade:G1: 4 - 4s Entidade:C1: 23 - 16s Entidade:C2: 90 - 80s Entidade:D1: 91 - 91s  || Tempo Ocioso: 67
 ---------------------------------------
 
-8 Tempo Ocioso: 91 | Entrada: 7 | Entidade:G1 - 7s Entidade:C1 - 32s Entidade:C2 - 90s Entidade:D1 - 106s Entidade:C1 - 125s Entidade:C2 - 134s Entidade:D1 - 148s  || Tempo Ocioso: 91
+8 Tempo Ocioso: 57 | Entrada: 3 | Entidade:G1: 3 - 3s Entidade:C1: 15 - 9s Entidade:C2: 82 - 68s Entidade:D1: 83 - 83s  || Tempo Ocioso: 57
 ---------------------------------------
 
-9 Tempo Ocioso: 49 | Entrada: 1 | Entidade:G1 - 1s Entidade:C1 - 2s Entidade:C2 - 58s Entidade:D1 - 69s  || Tempo Ocioso: 49
+9 Tempo Ocioso: 69 | Entrada: 4 | Entidade:G1: 4 - 4s Entidade:C1: 30 - 23s Entidade:C2: 98 - 82s Entidade:D1: 99 - 99s  || Tempo Ocioso: 69
 ---------------------------------------
 
-10 Tempo Ocioso: 62 | Entrada: 2 | Entidade:G1 - 2s Entidade:C1 - 14s Entidade:C2 - 74s Entidade:D1 - 90s  || Tempo Ocioso: 62
+10 Tempo Ocioso: 102 | Entrada: 6 | Entidade:G1: 6 - 6s Entidade:C1: 44 - 38s Entidade:C2: 111 - 98s Entidade:D1: 112 - 112s Entidade:C1: 136 - 131s Entidade:C2: 152 - 137s Entidade:D1: 153 - 153s  || Tempo Ocioso: 102
 ---------------------------------------
