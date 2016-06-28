@@ -6,7 +6,7 @@ from random import randint, random, randrange, uniform
 import types
 
 class Entities(object):
-	def __init__(self, id = 0, startTime = 0, placeList = [], placeListId = [], placeEnterTime = [], hostTime = 0, destiny = '', destinyId = 0, inComponent = 0, inServer = 0):
+	def __init__(self, id = 0, startTime = 0, placeList = [], placeListId = [], placeEnterTime = [], hostTime = 0, destiny = '', destinyId = 0, inComponent = 0, inServer = 0, totalOtioseTime = 0):
 		self.id = id
 		self.startTime = startTime
 		self.placeList = placeList
@@ -17,6 +17,7 @@ class Entities(object):
 		self.destinyId = destinyId
 		self.inComponent = inComponent
 		self.inServer = inServer
+		self.totalOtioseTime = totalOtioseTime
 
 class Server(object):
     def __init__(self, componentId = 0, beginTime = 0, endTime = 0, inUse = 0):
@@ -39,13 +40,14 @@ class Generators:
 	destinyId = []
 
 class Components(object):
-	def __init__(self, id = 0, serversQuantity = 0, serversList = [], destinyComponent = '', destinyId = 0, stack = []):
+	def __init__(self, id = 0, serversQuantity = 0, serversList = [], destinyComponent = '', destinyId = 0, stack = [], otioseTime = []):
 		self.id = id
 		self.serversQuantity = serversQuantity
 		self.serversList = serversList
 		self.destinyComponent = destinyComponent
 		self.destinyId = destinyId
 		self.stack = stack
+		self.otioseTime = otioseTime
 	
 class Dividers(object):
 	def __init__(self, id = 0, decisionsList = []):
@@ -332,7 +334,7 @@ for x in xrange(0, generators.quantity):
 		placeListId.append(generators.list[x])
 		placeEnterTime = []
 		placeEnterTime.append(startTime)
-		entities.append(Entities(entityId, startTime, placeList, placeListId, placeEnterTime, 0, generators.destinyComponent[x], generators.destinyId[x], -1, 0))
+		entities.append(Entities(entityId, startTime, placeList, placeListId, placeEnterTime, 0, generators.destinyComponent[x], generators.destinyId[x], -1, 0, 0))
 		print "%d | Entrada: %d | Local: %s%s | Destino: %s%d" %(entityId, startTime, placeList, placeListId, generators.destinyComponent[x], generators.destinyId[x])
 		finalFile.write("\r\n" + str(entityId) + " | Entrada: " + str(startTime) + " | Local: G" + str(generators.list[x]) + " | Destino: " + str(generators.destinyComponent[x]) + str(generators.destinyId[x]))
 		
@@ -365,9 +367,12 @@ for time in xrange(0, simulationTime):
 												aux += 1
 										if aux == 1:
 											components[y].stack.pop(0)
+											entities[x].totalOtioseTime += (time - components[y].otioseTime[0])
+											components[y].otioseTime.pop(0)
 									else:
 										if entities[x].id not in components[y].stack:
 											components[y].stack.append(entities[x].id)
+											components[y].otioseTime.append(time)
 								else: 
 									for z in xrange(0, len(components[y].serversList)):
 										if (components[y].serversList[z].inUse == 0) and (aux == 0):
@@ -383,6 +388,7 @@ for time in xrange(0, simulationTime):
 											aux += 1
 									if aux == 0 :
 										components[y].stack.append(entities[x].id)
+										components[y].otioseTime.append(time)
 					elif entities[x].destiny == 'D':
 						for y in xrange(0, len(dividers)):
 							if dividers[y].id == entities[x].destinyId:
@@ -406,10 +412,12 @@ for time in xrange(0, simulationTime):
 finalFile.write("\r\n---------------------------------------\r\n")
 
 for x in xrange(0, entityId):
-	print "\r\n%d | Entrada: %d | " %(entities[x].id, entities[x].startTime),
-	finalFile.write("\n" + str(entities[x].id) + " | Entrada: " + str(entities[x].startTime) + " | ")
+	print "\r\n%d Entrada: %d | " %(entities[x].id, entities[x].startTime),
+	finalFile.write("\n" + str(entities[x].id) + " Tempo Ocioso: " + str(entities[x].totalOtioseTime) + " | Entrada: " + str(entities[x].startTime) + " | ")
 	for y in xrange(0, len(entities[x].placeList)):
 		print "Entidade:%s%d - %ss | " %(entities[x].placeList[y], entities[x].placeListId[y], entities[x].placeEnterTime[y]),
 		finalFile.write("Entidade:" + str(entities[x].placeList[y]) + str(entities[x].placeListId[y]) + " - " + str(entities[x].placeEnterTime[y]) + "s ")
+	print " || Tempo Ocioso: %d" %(entities[x].totalOtioseTime),
+	finalFile.write(" || Tempo Ocioso: " + str(entities[x].totalOtioseTime))
 	print "\r\n---------------------------------------"
 	finalFile.write("\r\n---------------------------------------\r\n")
