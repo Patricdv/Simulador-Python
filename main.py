@@ -438,7 +438,7 @@ for x in xrange(0, len(components)):
 	for y in xrange(0, len(components[x].otioseList)):
 		averageOtioseTime += components[x].otioseList[y]
 	averageOtioseTime = (averageOtioseTime/len(components[x].otioseList))
-	finalFile.write("\r\n- C" + str(components[x].id) + " Tempo Médio de Ociosidade: " + str(averageOtioseTime))
-	print "- C%d Tempo Médio de Ociosidade: %d" %(components[x].id, averageOtioseTime)
+	finalFile.write("\r\n- C" + str(components[x].id) + " Tempo Médio de Fila: " + str(averageOtioseTime))
+	print "- C%d Tempo Médio de Fila: %d" %(components[x].id, averageOtioseTime)
 finalFile.write("\r\n---------------------------------------\r\n")
 print "---------------------------------------"
