@@ -1,5 +1,5 @@
 ---------------------------------------
-Tempo de Simulacao:30
+Tempo de Simulacao:300
 ---------------------------------------
 Gerador(es):1
 - G1 Destino: C1
@@ -17,8 +17,44 @@ Roteadores: 1
 -- 0.7 - S1
 ---------------------------------------
 1 - Entidades:
-1 | Entrada: 10 | Local: G1 | Destino: C1
+1 | Entrada: 3 | Local: G1 | Destino: C1
+2 | Entrada: 6 | Local: G1 | Destino: C1
+3 | Entrada: 4 | Local: G1 | Destino: C1
+4 | Entrada: 7 | Local: G1 | Destino: C1
+5 | Entrada: 4 | Local: G1 | Destino: C1
+6 | Entrada: 10 | Local: G1 | Destino: C1
+7 | Entrada: 7 | Local: G1 | Destino: C1
+8 | Entrada: 2 | Local: G1 | Destino: C1
+9 | Entrada: 4 | Local: G1 | Destino: C1
+10 | Entrada: 3 | Local: G1 | Destino: C1
 ---------------------------------------
 
-1 | Entrada: 10 | Entidade:G1 - 10s Entidade:C1 - 11s Entidade:C2 - 11s Entidade:D1 - 25s 
+1 | Entrada: 3 | Entidade:G1 - 3s Entidade:C1 - 36s Entidade:C2 - 49s Entidade:D1 - 63s Entidade:C1 - 102s Entidade:C2 - 110s Entidade:D1 - 122s Entidade:C1 - 126s Entidade:C2 - 133s Entidade:D1 - 145s 
+---------------------------------------
+
+2 | Entrada: 6 | Entidade:G1 - 6s Entidade:C1 - 12s Entidade:C2 - 29s Entidade:D1 - 44s Entidade:C1 - 131s Entidade:C2 - 144s Entidade:D1 - 154s 
+---------------------------------------
+
+3 | Entrada: 4 | Entidade:G1 - 4s Entidade:C1 - 21s Entidade:C2 - 36s Entidade:D1 - 46s 
+---------------------------------------
+
+4 | Entrada: 7 | Entidade:G1 - 7s Entidade:C1 - 29s Entidade:C2 - 43s Entidade:D1 - 57s Entidade:C1 - 68s Entidade:C2 - 78s Entidade:D1 - 91s 
+---------------------------------------
+
+5 | Entrada: 4 | Entidade:G1 - 4s Entidade:C1 - 44s Entidade:C2 - 56s Entidade:D1 - 69s 
+---------------------------------------
+
+6 | Entrada: 10 | Entidade:G1 - 10s Entidade:C1 - 51s Entidade:C2 - 62s Entidade:D1 - 77s Entidade:C1 - 84s Entidade:C2 - 95s Entidade:D1 - 104s Entidade:C1 - 109s Entidade:C2 - 120s Entidade:D1 - 129s Entidade:C1 - 139s Entidade:C2 - 149s Entidade:D1 - 161s 
+---------------------------------------
+
+7 | Entrada: 7 | Entidade:G1 - 7s Entidade:C1 - 74s Entidade:C2 - 84s Entidade:D1 - 101s 
+---------------------------------------
+
+8 | Entrada: 2 | Entidade:G1 - 2s Entidade:C1 - 3s Entidade:C2 - 17s Entidade:D1 - 30s 
+---------------------------------------
+
+9 | Entrada: 4 | Entidade:G1 - 4s Entidade:C1 - 92s Entidade:C2 - 103s Entidade:D1 - 116s Entidade:C1 - 118s Entidade:C2 - 127s Entidade:D1 - 144s 
+---------------------------------------
+
+10 | Entrada: 3 | Entidade:G1 - 3s Entidade:C1 - 59s Entidade:C2 - 70s Entidade:D1 - 84s 
 ---------------------------------------
