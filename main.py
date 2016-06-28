@@ -424,7 +424,7 @@ for x in xrange(0, entityId):
 	finalFile.write("\n" + str(entities[x].id) + " Tempo Ocioso: " + str(entities[x].totalOtioseTime) + " | Entrada: " + str(entities[x].startTime) + " | ")
 	for y in xrange(0, len(entities[x].placeList)):
 		print "Entidade:%s%d: %s - %ss | " %(entities[x].placeList[y], entities[x].placeListId[y], entities[x].placeEnterTime[y], entities[x].placeExitTime[y]),
-		finalFile.write("Entidade:" + str(entities[x].placeList[y]) + str(entities[x].placeListId[y]) + ": " + str(entities[x].placeExitTime[y]) + " - " + str(entities[x].placeEnterTime[y]) + "s ")
+		finalFile.write("Entidade:" + str(entities[x].placeList[y]) + str(entities[x].placeListId[y]) + ": " + str(entities[x].placeEnterTime[y]) + " - "  + str(entities[x].placeExitTime[y]) + "s ")
 	print " || Tempo Ocioso: %d" %(entities[x].totalOtioseTime),
 	finalFile.write(" || Tempo Ocioso: " + str(entities[x].totalOtioseTime))
 	print "\r\n---------------------------------------"
