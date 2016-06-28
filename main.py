@@ -349,7 +349,7 @@ for time in xrange(0, simulationTime):
 						aux = 0
 						for y in xrange(0, len(components)):
 							if (components[y].id == entities[x].destinyId) and (aux == 0):
-								if components[y].stack != []:
+								if len(components[y].stack):
 									if components[y].stack[0] == entities[x].id:
 										for z in xrange(0, len(components[y].serversList)):
 											if (components[y].serversList[z].inUse == 0) and (aux == 0):
@@ -363,10 +363,11 @@ for time in xrange(0, simulationTime):
 												entities[x].inComponent = y
 												entities[x].inServer = z
 												aux += 1
-										if aux == 1:		
+										if aux == 1:
 											components[y].stack.pop(0)
 									else:
-										components[y].stack.append(entities[x].id)
+										if entities[x].id not in components[y].stack:
+											components[y].stack.append(entities[x].id)
 								else: 
 									for z in xrange(0, len(components[y].serversList)):
 										if (components[y].serversList[z].inUse == 0) and (aux == 0):
