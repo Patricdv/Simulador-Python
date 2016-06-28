@@ -340,13 +340,14 @@ for time in xrange(0, simulationTime):
 		if time > entities[x].startTime: 
 			if entities[x].hostTime == 0:
 				if entities[x].inComponent >= 0:
+					print("liberado\n")
 					components[entities[x].inComponent].serversList[entities[x].inServer].inUse = 0
 					entities[x].inComponent = -1
 				else:
 					if entities[x].destiny == 'C':
+						aux = 0
 						for y in xrange(0, len(components)):
-							if components[y].id == entities[x].destinyId:
-								aux = 0
+							if (components[y].id == entities[x].destinyId) and (aux == 0):
 								for z in xrange(0, len(components[y].serversList)):
 									if (components[y].serversList[z].inUse == 0) and (aux == 0):
 										components[y].serversList[z].inUse = 1
@@ -364,14 +365,16 @@ for time in xrange(0, simulationTime):
 							if dividers[y].id == entities[x].destinyId:
 								rand = random()  
 								check = 0.0
+								aux = 0
 								for z in xrange(0, len(dividers[y].decisionsList)):
 									check += dividers[y].decisionsList[z].percent
-									if rand <= check:
+									if (rand <= check) and (aux == 0):
 										entities[x].placeList.append('D')
 										entities[x].placeListId.append(dividers[y].id)
 										entities[x].placeEnterTime.append(time)
 										entities[x].destiny = dividers[y].decisionsList[z].destiny
 										entities[x].destinyId = dividers[y].decisionsList[z].destinyId
+										aux += 1
 					elif entities[x].destiny == 'S':
 						pass
 			else:
