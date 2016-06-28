@@ -41,7 +41,7 @@ class Generators:
 	destinyId = []
 
 class Components(object):
-	def __init__(self, id = 0, serversQuantity = 0, serversList = [], destinyComponent = '', destinyId = 0, stack = [], otioseTime = []):
+	def __init__(self, id = 0, serversQuantity = 0, serversList = [], destinyComponent = '', destinyId = 0, stack = [], otioseTime = [], otioseList = []):
 		self.id = id
 		self.serversQuantity = serversQuantity
 		self.serversList = serversList
@@ -49,7 +49,8 @@ class Components(object):
 		self.destinyId = destinyId
 		self.stack = stack
 		self.otioseTime = otioseTime
-	
+		self.otioseList = otioseList
+
 class Dividers(object):
 	def __init__(self, id = 0, decisionsList = []):
 		self.id = id
@@ -372,6 +373,7 @@ for time in xrange(0, simulationTime):
 										if aux == 1:
 											components[y].stack.pop(0)
 											entities[x].totalOtioseTime += (time - components[y].otioseTime[0])
+											components[y].otioseList.append(time - components[y].otioseTime[0])
 											components[y].otioseTime.pop(0)
 									else:
 										if entities[x].id not in components[y].stack:
@@ -427,3 +429,16 @@ for x in xrange(0, entityId):
 	finalFile.write(" || Tempo Ocioso: " + str(entities[x].totalOtioseTime))
 	print "\r\n---------------------------------------"
 	finalFile.write("\r\n---------------------------------------\r\n")
+
+
+finalFile.write("Componentes:\n")
+print "Componentes:"
+for x in xrange(0, len(components)):
+	averageOtioseTime = 0
+	for y in xrange(0, len(components[x].otioseList)):
+		averageOtioseTime += components[x].otioseList[y]
+	averageOtioseTime = (averageOtioseTime/len(components[x].otioseList))
+	finalFile.write("\r\n- C" + str(components[x].id) + " Tempo Médio de Ociosidade: " + str(averageOtioseTime))
+	print "- C%d Tempo Médio de Ociosidade: %d" %(components[x].id, averageOtioseTime)
+finalFile.write("\r\n---------------------------------------\r\n")
+print "---------------------------------------"
