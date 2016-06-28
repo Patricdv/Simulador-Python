@@ -1,5 +1,5 @@
 ---------------------------------------
-Tempo de Simulacao:500
+Tempo de Simulacao:30
 ---------------------------------------
 Gerador(es):1
 - G1 Destino: C1
@@ -14,88 +14,11 @@ Componentes: 2
 Roteadores: 1
 - D1:
 -- 0.3 - C1
--- 0.5 - S1
--- 0.2 - S2
+-- 0.7 - S1
 ---------------------------------------
 1 - Entidades:
-1 | Entrada: 2 | Local: G1 | Destino: C1
-2 | Entrada: 17 | Local: G1 | Destino: C1
-3 | Entrada: 11 | Local: G1 | Destino: C1
-4 | Entrada: 3 | Local: G1 | Destino: C1
-5 | Entrada: 21 | Local: G1 | Destino: C1
-6 | Entrada: 6 | Local: G1 | Destino: C1
-7 | Entrada: 23 | Local: G1 | Destino: C1
-8 | Entrada: 1 | Local: G1 | Destino: C1
-9 | Entrada: 4 | Local: G1 | Destino: C1
-10 | Entrada: 5 | Local: G1 | Destino: C1
-11 | Entrada: 22 | Local: G1 | Destino: C1
-12 | Entrada: 23 | Local: G1 | Destino: C1
-13 | Entrada: 25 | Local: G1 | Destino: C1
-14 | Entrada: 23 | Local: G1 | Destino: C1
-15 | Entrada: 11 | Local: G1 | Destino: C1
-16 | Entrada: 22 | Local: G1 | Destino: C1
-17 | Entrada: 20 | Local: G1 | Destino: C1
-18 | Entrada: 25 | Local: G1 | Destino: C1
-19 | Entrada: 17 | Local: G1 | Destino: C1
-20 | Entrada: 24 | Local: G1 | Destino: C1
+1 | Entrada: 10 | Local: G1 | Destino: C1
 ---------------------------------------
 
-1 | Entrada: 2 | Entidade:G1 - 2s 
----------------------------------------
-
-2 | Entrada: 17 | Entidade:G1 - 17s 
----------------------------------------
-
-3 | Entrada: 11 | Entidade:G1 - 11s 
----------------------------------------
-
-4 | Entrada: 3 | Entidade:G1 - 3s 
----------------------------------------
-
-5 | Entrada: 21 | Entidade:G1 - 21s 
----------------------------------------
-
-6 | Entrada: 6 | Entidade:G1 - 6s 
----------------------------------------
-
-7 | Entrada: 23 | Entidade:G1 - 23s 
----------------------------------------
-
-8 | Entrada: 1 | Entidade:G1 - 1s Entidade:C1 - 1s Entidade:C2 - 1s Entidade:D1 - 16s Entidade:D1 - 16s 
----------------------------------------
-
-9 | Entrada: 4 | Entidade:G1 - 4s 
----------------------------------------
-
-10 | Entrada: 5 | Entidade:G1 - 5s 
----------------------------------------
-
-11 | Entrada: 22 | Entidade:G1 - 22s 
----------------------------------------
-
-12 | Entrada: 23 | Entidade:G1 - 23s 
----------------------------------------
-
-13 | Entrada: 25 | Entidade:G1 - 25s 
----------------------------------------
-
-14 | Entrada: 23 | Entidade:G1 - 23s 
----------------------------------------
-
-15 | Entrada: 11 | Entidade:G1 - 11s 
----------------------------------------
-
-16 | Entrada: 22 | Entidade:G1 - 22s 
----------------------------------------
-
-17 | Entrada: 20 | Entidade:G1 - 20s 
----------------------------------------
-
-18 | Entrada: 25 | Entidade:G1 - 25s 
----------------------------------------
-
-19 | Entrada: 17 | Entidade:G1 - 17s 
----------------------------------------
-
-20 | Entrada: 24 | Entidade:G1 - 24s 
+1 | Entrada: 10 | Entidade:G1 - 10s Entidade:C1 - 11s Entidade:C2 - 11s Entidade:D1 - 25s 
 ---------------------------------------
