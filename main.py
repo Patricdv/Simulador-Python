@@ -349,7 +349,25 @@ for time in xrange(0, simulationTime):
 						aux = 0
 						for y in xrange(0, len(components)):
 							if (components[y].id == entities[x].destinyId) and (aux == 0):
-								if components[y].stack == []:
+								if components[y].stack != []:
+									if components[y].stack[0] == entities[x].id:
+										for z in xrange(0, len(components[y].serversList)):
+											if (components[y].serversList[z].inUse == 0) and (aux == 0):
+												components[y].serversList[z].inUse = 1
+												entities[x].placeList.append('C')
+												entities[x].placeListId.append(components[y].id)
+												entities[x].placeEnterTime.append(time)
+												entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
+												entities[x].destiny = components[y].destinyComponent
+												entities[x].destinyId = components[y].destinyId
+												entities[x].inComponent = y
+												entities[x].inServer = z
+												aux += 1
+										if aux == 1:		
+											components[y].stack.pop(0)
+									else:
+										components[y].stack.append(entities[x].id)
+								else: 
 									for z in xrange(0, len(components[y].serversList)):
 										if (components[y].serversList[z].inUse == 0) and (aux == 0):
 											components[y].serversList[z].inUse = 1
@@ -364,20 +382,6 @@ for time in xrange(0, simulationTime):
 											aux += 1
 									if aux == 0 :
 										components[y].stack.append(entities[x].id)
-								elif components[y].stack[0] == entities[x].id:
-									components[y].stack.pop(0)
-									for z in xrange(0, len(components[y].serversList)):
-										if (components[y].serversList[z].inUse == 0) and (aux == 0):
-											components[y].serversList[z].inUse = 1
-											entities[x].placeList.append('C')
-											entities[x].placeListId.append(components[y].id)
-											entities[x].placeEnterTime.append(time)
-											entities[x].hostTime = randint(components[y].serversList[z].beginTime, components[y].serversList[z].endTime)
-											entities[x].destiny = components[y].destinyComponent
-											entities[x].destinyId = components[y].destinyId
-											entities[x].inComponent = y
-											entities[x].inServer = z
-											aux += 1	
 					elif entities[x].destiny == 'D':
 						for y in xrange(0, len(dividers)):
 							if dividers[y].id == entities[x].destinyId:
